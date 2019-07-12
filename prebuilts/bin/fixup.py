@@ -33,17 +33,17 @@ import sys
 
 
 # Mapping of macro permission sets to the macros defined in external/sepolicy/te_macros
-x_file_perms = set(['getattr', 'execute', 'execute_no_trans'])
-r_file_perms = set(['getattr', 'open', 'read', 'ioctl', 'lock'])
-w_file_perms = set(['open', 'append', 'write'])
+x_file_perms = set(['getattr', 'execute', 'execute_no_trans', 'map'])
+r_file_perms = set(['getattr', 'open', 'read', 'ioctl', 'lock', 'map'])
+w_file_perms = set(['open', 'append', 'write', 'lock', 'map'])
 rx_file_perms = r_file_perms.union(x_file_perms)
 ra_file_perms = r_file_perms.union(set('append'))
 rw_file_perms = r_file_perms.union(w_file_perms)
 rwx_file_perms = rw_file_perms.union(x_file_perms)
 #link_file_perms = set(['getattr', 'link', 'unlink', 'rename'])
 create_file_perms = rw_file_perms.union(rw_file_perms, set(['create', 'rename', 'setattr', 'unlink']))
-r_dir_perms = set(['open', 'getattr', 'read', 'search', 'ioctl'])
-w_dir_perms = set(['open', 'search', 'write', 'add_name', 'remove_name'])
+r_dir_perms = set(['open', 'getattr', 'read', 'search', 'ioctl', 'lock'])
+w_dir_perms = set(['open', 'search', 'write', 'add_name', 'remove_name', 'lock'])
 ra_dir_perms = r_dir_perms.union(set(['add_name', 'write']))
 rw_dir_perms = r_dir_perms.union(w_dir_perms)
 create_dir_perms = rw_dir_perms.union(set(['create', 'reparent','rename', 'rmdir', 'setattr']))
